@@ -21,5 +21,5 @@ app.use('/admin', admin);
 app.use('/api', api);
 
 app.listen(process.env.PORT || 3002, () => {
-    console.log(`The app started on http://localhost:${process.env.PORT}`);
+  console.log(`The app started on http://localhost:${process.env.PORT}`);
 });
