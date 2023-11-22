@@ -27,11 +27,14 @@
 
     const apiKey = 'MGVmZGEzYzctNzI3Ny00OTY5LWIwMWUtZTU1MWMwOWM2NWZhOjBiMmNkMDFiLTJkNDMtNGNjOC05MGI0LWNmYWRjMWM0ZWIyOA==';
     const outletRef = '53324855-c475-4f04-bb0f-6fc50740d109';
+    const successUrl = 'http://7009.local/api/success-payment';
 
     window.NI.mountCardInput('mount-id', {
       style: style,
       apiKey: apiKey,
       outletRef: outletRef,
+      onSuccess: successUrl,
+      onFail, // set your fail url from frontend part 
       onChangeValidStatus: ({
         isCVVValid,
         isExpiryValid,
