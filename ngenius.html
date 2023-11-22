@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://paypage.sandbox.ngenius-payments.com/hosted-sessions/sdk.js"></script>
+  </head>
+  <body>
+    <div>
+      <div id="mount-id"></div>
+  	  <button onclick="createSession()" class="checkoutButton">
+        Check out
+      </button>
+    </div>
+  </body>
+  <script>
+    const style = {
+      input: {
+        backgroundColor: 'white',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+        padding: '8px',
+        fontSize: '14px',
+      }
+    };
+
+    const apiKey = 'MGVmZGEzYzctNzI3Ny00OTY5LWIwMWUtZTU1MWMwOWM2NWZhOjBiMmNkMDFiLTJkNDMtNGNjOC05MGI0LWNmYWRjMWM0ZWIyOA==';
+    const outletRef = '53324855-c475-4f04-bb0f-6fc50740d109';
+
+    window.NI.mountCardInput('mount-id', {
+      style: style,
+      apiKey: apiKey,
+      outletRef: outletRef,
+      onChangeValidStatus: ({
+        isCVVValid,
+        isExpiryValid,
+        isNameValid,
+        isPanValid
+      }) => {
+        console.log(isCVVValid, isExpiryValid, isNameValid, isPanValid);
+      }
+    });
+
+    let sessionId;
+    async function createSession() {
+      try {
+        const response = await window.NI.generateSessionId();
+        sessionId = response.session_id;
+        console.log(sessionId)
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  </script>
+</html>

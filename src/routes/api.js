@@ -1,10 +1,10 @@
 import express from "express";
 
-import { makePayment } from "../controllers/paymentController.js";
+import { cardPay } from "../controllers/paymentController.js";
 
 const router = express.Router();
 
 router.post('/chatge');
-router.post('/make-payment', makePayment);
+router.post('/card-pay', cardPay);
 
 export default router;
