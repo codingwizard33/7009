@@ -8,7 +8,7 @@ export const sendWhatsAppMessageService = async (req) => {
     const message = await client.messages.create({
       from: 'whatsapp:+14155238886',
       body: 'movie URL',
-      to: `whatsapp:+37498360038`
+      to: `whatsapp:${req.body.phone}`
     });
     return message;
   } catch (error) {
@@ -16,5 +16,3 @@ export const sendWhatsAppMessageService = async (req) => {
     return error.message;
   }
 };
-
-//${req.mobNumber}
